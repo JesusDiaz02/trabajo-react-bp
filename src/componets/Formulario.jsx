@@ -20,7 +20,7 @@ const Formulario =()=>{
      const obtenerDatos = async()=>{
         try {
             const db = firebase.firestore()
-            const data = await db.collection('pokemon')
+            const data = await db.collection('pokemon').get()
             const array = data.docs.map(item=>(
                 {
                     id:item.id, ...item.data()
@@ -190,17 +190,17 @@ const guardarDatos = async (e)=>{
    } 
 
    return(
-    <div className="=container mt-4">
-        <h1 className="=text-center">MAESTRO POKEMON</h1>
+    <div className="container mt-5">
+        <h1 className="text-center">MAESTRO POKEMON</h1>
         <hr/>
         <div className="row">
-            <div className="col-4">
+            <div className="col-8">
                 <h4 className="text-center">Listado Pokemon</h4>
                 <ul className="list-group">
                 {   
                         lista.map((item)=>(
                             <li className="list-group-item" key={item.id}>
-                            <span className="lead">{item.nombrepokemon}-{item.nombreDescripcion}-{item.nombreTipo1}-{item.nombreTipo2}-
+                            <span className="lead">{item.nombrePokemon}-{item.nombreDescripcion}-{item.nombreTipo1}-{item.nombreTipo2}-
                             {item.nombreRegion}-{item.nombreDebilidad}-{item.nombreAtaquePrincipal}</span>
                             <button className="btn btn-danger btn-sm float-end mx-2"onClick={()=>eliminar(item.id)}>Eliminar</button>
                                 <button className="btn btn-warning btn-sm float-end"onClick={()=>auxEditar(item)}>Editar</button>
@@ -210,7 +210,7 @@ const guardarDatos = async (e)=>{
                 }                  
                 </ul>
             </div>
-            <div className="col-2">
+            <div className="col-4">
                 <h4 className="text-center">
                     {
                         modoEdicion ? 'Editar pokemon':'Agregar pokemon'
