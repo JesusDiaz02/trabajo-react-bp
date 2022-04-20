@@ -190,11 +190,11 @@ const guardarDatos = async (e)=>{
    } 
 
    return(
-    <div className="=container mt-9">
+    <div className="=container mt-4">
         <h1 className="=text-center">MAESTRO POKEMON</h1>
         <hr/>
         <div className="row">
-            <div className="col-9">
+            <div className="col-4">
                 <h4 className="text-center">Listado Pokemon</h4>
                 <ul className="list-group">
                 {   
@@ -210,7 +210,7 @@ const guardarDatos = async (e)=>{
                 }                  
                 </ul>
             </div>
-            <div className="col-4">
+            <div className="col-2">
                 <h4 className="text-center">
                     {
                         modoEdicion ? 'Editar pokemon':'Agregar pokemon'
