@@ -117,6 +117,76 @@ const guardarDatos = async (e)=>{
         setModoEdicion(true)
         setId(item.id)
     }
+    const editar=async e=>{
+        e.preventDefault()
+        if(!pokemon.trim()){
+            setError('campo fruta vacio')
+            return
+            
+        }
+        if(!descripcion.trim()){
+            setError('campo descripcion vacio')
+             return
+        }
+        if(!tipo1.trim()){
+            setError('campo tipo1 vacio')
+            return
+            
+        }
+        if(!tipo2.trim()){
+            setError('campo tipo2 vacio')
+             return
+        }
+        if(!region.trim()){
+            setError('campo region vacio')
+            return
+            
+        }
+        if(!debilidad.trim()){
+            setError('campo debilidad vacio')
+             return
+        }
+        if(!ataquePrincipal.trim()){
+            setError('campo ataque principal vacio')
+             return
+        }
+        try {
+            const db = firebase.firestore()
+            await db.collection('pokemon').doc(id).update({
+                nombrePokemon:pokemon,
+                nombreDescripcion:descripcion,
+                nombreTipo1:tipo1,
+                nombreTipo2:tipo2,
+                nombreRegion:region,
+                nombreDebilidad:debilidad,
+                nombreAtaquePrincipal:ataquePrincipal
+            })
+            
+        } catch (error) {
+            console.log(error)
+        }
+        setModoEdicion(false)
+        setPokemon('')
+        setDescripcion('')
+        setTipo1('')
+        setTipo2('')
+        setRegion('')
+        setDebilidad('')
+        setAtaquePrincipal('')
+        setError(null)
+    }
 
+   const cancelar=()=>{
+        setModoEdicion(false)
+        setPokemon('')
+        setDescripcion('')
+        setTipo1('')
+        setTipo2('')
+        setRegion('')
+        setDebilidad('')
+        setAtaquePrincipal('')
+        setError(null)
+   } 
 
+   
 }
