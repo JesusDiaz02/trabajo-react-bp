@@ -16,8 +16,8 @@ const Formulario =()=>{
     const[error, setError]=React.useState(null)
 
 
-React.useEffect(()=>{
-    const obtenerDatos = async()=>{
+    React.useEffect(()=>{
+     const obtenerDatos = async()=>{
         try {
             const db = firebase.firestore()
             const data = await db.collection('pokemon')
@@ -37,7 +37,7 @@ React.useEffect(()=>{
 const guardarDatos = async (e)=>{
     e.preventDefault()
     if(!pokemon.trim()){
-        setError('campo fruta vacio')
+        setError('campo pokemon vacio')
         return
         
     }
@@ -190,7 +190,7 @@ const guardarDatos = async (e)=>{
    } 
 
    return(
-    <div className="=container mt-6">
+    <div className="=container mt-9">
         <h1 className="=text-center">MAESTRO POKEMON</h1>
         <hr/>
         <div className="row">
